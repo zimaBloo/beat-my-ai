@@ -1,6 +1,6 @@
 """Retrain the AI on all collected games and write the new brain and its report.
 
-    python -m rps.train --games ../data/games.jsonl --brain ../data/brain.json --report ../data/report.json
+    python -m rps.train --games ../data/games.jsonl --brain ../data/brain.json --archive ../data/brains --report ../data/report.json
 """
 import argparse
 import json
@@ -14,6 +14,7 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--games", required=True)
     ap.add_argument("--brain", required=True)
+    ap.add_argument("--archive", help="folder that keeps every brain version")
     ap.add_argument("--report", required=True)
     args = ap.parse_args()
 
@@ -23,7 +24,7 @@ def main() -> None:
     rows = examples(games)
     brain = export_brain(train(rows), trained_on=len(rows))        # the brain that plays learns from everything
     report.update({"games": len(games), "moves": len(rows), "brain": brain["version"]})
-    save_brain(brain, args.brain)
+    save_brain(brain, args.brain, args.archive)
     with open(args.report, "w") as f:
         json.dump(report, f, indent=2)
         f.write("\n")

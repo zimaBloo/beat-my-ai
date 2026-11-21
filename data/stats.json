@@ -1,0 +1,21 @@
+{
+ "games": 0,
+ "moves": 0,
+ "players": 0,
+ "humans_won": 0,
+ "ai_won": 0,
+ "draws": 0,
+ "opening": {
+  "rock": 0,
+  "paper": 0,
+  "scissors": 0
+ },
+ "repeat_after_win": {
+  "repeated": 0,
+  "of": 0
+ },
+ "median_think_ms": null,
+ "ai_round_win_rate": [],
+ "margins": [],
+ "last": null
+}

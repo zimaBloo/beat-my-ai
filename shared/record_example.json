@@ -1,0 +1,35 @@
+{
+ "code": "v1.c6d4120b.7f3a9c02.RPSSRPRPSR",
+ "extras": "t=1840,912,655,1203,480,733,2950,611,540,1322;i=touch;n=2;p=1",
+ "facts": {
+  "v": 1,
+  "engine": 1,
+  "brain": "c6d4120b",
+  "seed": "7f3a9c02",
+  "rounds": 10,
+  "moves": "RPSSRPRPSR",
+  "ai": "SPRSPRSSRS",
+  "score": {
+   "player": 4,
+   "ai": 4,
+   "ties": 2
+  },
+  "client": {
+   "think_ms": [
+    1840,
+    912,
+    655,
+    1203,
+    480,
+    733,
+    2950,
+    611,
+    540,
+    1322
+   ],
+   "input": "touch",
+   "nth": 2,
+   "page": "1"
+  }
+ }
+}

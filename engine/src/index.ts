@@ -5,3 +5,4 @@ export * from "./brain.ts";
 export * from "./policy.ts";
 export * from "./game.ts";
 export * from "./codec.ts";
+export * from "./record.ts";

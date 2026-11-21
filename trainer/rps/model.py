@@ -64,8 +64,14 @@ def export_brain(model: nn.Sequential, trained_on: int) -> dict:
     return {"version": digest if trained_on else "untrained", "trainedOn": trained_on, "layers": layers}
 
 
-def save_brain(brain: dict, path: str | Path) -> None:
-    Path(path).write_text(json.dumps(brain, separators=(",", ":")) + "\n")
+def save_brain(brain: dict, path: str | Path, archive: str | Path | None = None) -> None:
+    """Writes the current brain. With `archive`, also keeps a copy under its version name, forever:
+    any stored game can then be replayed against the exact brain it was played with."""
+    text = json.dumps(brain, separators=(",", ":")) + "\n"
+    Path(path).write_text(text)
+    if archive is not None:
+        Path(archive).mkdir(parents=True, exist_ok=True)
+        (Path(archive) / f"{brain['version']}.json").write_text(text)
 
 
 def brain_predict(brain: dict, indices: list[int]) -> list[float]:
