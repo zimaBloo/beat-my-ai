@@ -1,0 +1,13 @@
+{
+  "name": "beat-my-ai-engine",
+  "private": true,
+  "type": "module",
+  "description": "Rules of the game and the AI's move prediction. Used by the game page and by the automatic job that checks each game.",
+  "scripts": {
+    "test": "tsc --noEmit && node --test test/"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.9.0"
+  }
+}

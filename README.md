@@ -10,6 +10,7 @@ Work in progress. This repo will hold the game, the AI's training code and the a
   - `glove.py`: the gloved hand, posed by joint angles (rock, paper, scissors).
   - `animate.py`: the loop. Two gloves shake, throw and react, timed like an old cartoon.
   - `assemble.py`: draws the overlay layers (winner burst, YOU / AI labels) and builds the final animation.
+- `engine/` is the game itself: the rules, what the AI looks at, how it picks a move, and a way to replay any game from the player's moves alone. That replay is how a submitted score gets checked. Run the tests with `cd engine && npm install && npm test`.
 - `media/rps-loop.webp`: the finished loop.
 - `hooks/pre-commit`: blocks a commit with the wrong author email or a `.env` file.
 
