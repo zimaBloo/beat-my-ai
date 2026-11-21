@@ -1,0 +1,16 @@
+{
+  "name": "beat-my-ai-web",
+  "private": true,
+  "type": "module",
+  "description": "The game page: play rock-paper-scissors against the AI.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "build:single": "tsc --noEmit && vite build --mode single"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8",
+    "vite-plugin-singlefile": "^2.3.4"
+  }
+}

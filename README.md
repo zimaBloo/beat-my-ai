@@ -14,6 +14,8 @@ Work in progress. This repo will hold the game, the AI's training code and the a
 - `trainer/` teaches the AI. It reads the collected games, trains a small neural network with PyTorch, measures it on the newest games it has not seen, and saves the brain for the engine. Run the tests with `cd trainer && python -m venv .venv && .venv/bin/pip install -r requirements.txt && .venv/bin/python -m pytest`.
 - `shared/` holds examples that both the trainer and the engine are tested against, so the two always compute the same thing.
 - `data/` is the memory of the project. `games.jsonl` keeps every game ever played, one per line, with everything needed to replay it. Records are only added, never changed. `brains/` keeps every version of the AI. `stats.json` and `report.json` are worked out from the games and can be rebuilt at any time. Empty for now: nobody has played yet.
+- `web/` is the game page. Two gloves on a stage, three buttons, the result in large text. It uses the engine directly, moves the glove pictures like the 3D loop does (same pose numbers, 12 drawings a second), times how long you think, and at the end makes the short game code that gets sent. Try it: `cd web && npm install && npm run dev`. `npm run build:single` packs it into one HTML file that opens from disk.
+- `art/sprites.py` and `art/to_webp.py` make the six single-glove pictures the page uses.
 - `media/rps-loop.webp`: the finished loop.
 - `hooks/pre-commit`: blocks a commit with the wrong author email or a `.env` file.
 

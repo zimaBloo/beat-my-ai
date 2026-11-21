@@ -1,6 +1,8 @@
 # rendered frames can be rebuilt with art/animate.py
 art/frames/
 node_modules/
+dist/
+dist-single/
 .venv/
 .pytest_cache/
 __pycache__/

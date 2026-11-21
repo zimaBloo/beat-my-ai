@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Can you beat my AI?</title>
+  <meta name="description" content="Rock-paper-scissors against a small AI that learns from everyone who plays it.">
+  <meta name="color-scheme" content="dark">
+</head>
+<body>
+  <main class="page">
+    <header>
+      <h1>Can you beat my AI?</h1>
+      <p class="lead">Rock-paper-scissors against a small AI that learns from everyone who plays it. <span id="brainLine"></span></p>
+    </header>
+
+    <section class="stage" id="stage" aria-label="The game">
+      <p class="tag you" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M10 2l7 8h-4.4v8H7.400v-8H3z"/></svg>YOU</p>
+      <p class="tag ai" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M10 1l2.200 6.800L19 10l-6.800 2.200L10 19l-2.200-6.800L1 10l6.800-2.200z"/></svg>AI</p>
+      <div class="arm left" id="armYou"><div class="hand"><img id="imgYou" alt="" draggable="false"></div></div>
+      <div class="arm right" id="armAi"><div class="hand"><img id="imgAi" alt="" draggable="false"></div></div>
+      <svg class="burst" id="burst" aria-hidden="true"></svg>
+      <p class="verdict" id="verdict" role="status" aria-live="polite"></p>
+    </section>
+
+    <p class="score"><span>Round <b id="round">1</b> of <b id="rounds">10</b></span><span>You <b id="sYou">0</b></span><span>AI <b id="sAi">0</b></span><span>Ties <b id="sTie">0</b></span></p>
+
+    <div class="moves" id="moves">
+      <button class="move" data-move="0"><img alt="" id="btn0"><span>Rock</span><kbd>R</kbd></button>
+      <button class="move" data-move="1"><img alt="" id="btn1"><span>Paper</span><kbd>P</kbd></button>
+      <button class="move" data-move="2"><img alt="" id="btn2"><span>Scissors</span><kbd>S</kbd></button>
+    </div>
+    <p class="think" id="think"></p>
+
+    <section class="end" id="end" hidden>
+      <h2 id="endTitle"></h2>
+      <p id="endRank" class="rank"></p>
+      <label class="consent"><input type="checkbox" id="showName"><span>Show my GitHub name on the profile. Leave empty to stay anonymous there.</span></label>
+      <div class="row">
+        <a class="btn" id="send" target="_blank" rel="noopener">Send my game to train the AI</a>
+        <button class="btn quiet" id="again">Play again</button>
+      </div>
+      <p class="fine" id="sendNote"></p>
+    </section>
+
+    <footer>
+      <p>The AI picks its move before you pick yours. It looks at your last two moves, its own last move and who won, and guesses what you will do next.</p>
+    </footer>
+  </main>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

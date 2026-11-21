@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { decode, decodeExtras, encodeExtras, gameFacts, ENGINE_VERSION, type Brain } from "../src/index.ts";
+import { decode, decodeExtras, encodeExtras, gameFacts, percentile, ENGINE_VERSION, type Brain } from "../src/index.ts";
 
 const shared = new URL("../../shared/", import.meta.url);
 const read = (name: string) => JSON.parse(readFileSync(new URL(name, shared), "utf8"));
@@ -34,4 +34,12 @@ test("extra game info: goes there and back, and odd input is refused", () => {
                      "t=1,1,1,1,1,1,1,1,1,1;i=key;n=1;p=<b>", "t=1,1,1,1,1,1,1,1,1,x;i=key;n=1;p=1"]) {
     assert.throws(() => decodeExtras(bad), Error, bad);
   }
+});
+
+test("percentile: same answers as the Python side", () => {
+  const margins = [-4, -2, -2, 0, 1, 3];
+  assert.equal(percentile(margins, 3), 91.7);
+  assert.equal(percentile(margins, -4), 8.3);
+  assert.equal(percentile(margins, -2), 33.3);
+  assert.equal(percentile([], 2), null);
 });
