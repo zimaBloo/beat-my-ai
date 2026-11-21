@@ -17,6 +17,7 @@ Work in progress. This repo will hold the game, the AI's training code and the a
 - `web/` is the game page. Two gloves on a stage, three buttons, the result in large text. It uses the engine directly, moves the glove pictures like the 3D loop does (same pose numbers, 12 drawings a second), times how long you think, and at the end makes the short game code that gets sent. Try it: `cd web && npm install && npm run dev`. `npm run build:single` packs it into one HTML file that opens from disk.
 - `art/sprites.py` and `art/to_webp.py` make the six single-glove pictures the page uses.
 - `.github/` is the automatic job. `ISSUE_TEMPLATE/game.yml` is the form a finished game arrives in. `workflows/game.yml` runs for every form: it checks the game by replaying it, stores it, retrains the AI, rebuilds the statistics, saves the data, answers the player and closes the form. `workflows/publish.yml` puts the game page online with the newest data; it stays off until the repository variable `PAGES` is set to `on`. The job needs one secret, `PLAYER_SALT`, which scrambles player numbers.
+- `trainer/rps/scoreboard.py` draws the scoreboard and the Play button my profile shows (`media/scoreboard-*.svg`, `media/play-*.svg`). The automatic job redraws them after every game.
 - `media/rps-loop.webp`: the finished loop.
 - `hooks/pre-commit`: blocks a commit with the wrong author email or a `.env` file.
 

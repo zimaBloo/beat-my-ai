@@ -56,6 +56,11 @@ jobs:
             --issue "$ISSUE_NUMBER" --user-id "$USER_ID" --login "$LOGIN" --reply "$RUNNER_TEMP/reply.md" | tail -1)
           echo "status=$status" >> "$GITHUB_OUTPUT"
 
+      - name: Redraw the scoreboard
+        if: steps.store.outputs.status == 'stored'
+        working-directory: trainer
+        run: python -m rps.scoreboard --stats ../data/stats.json --out ../media
+
       - name: Save the data
         if: steps.store.outputs.status == 'stored'
         env:
@@ -63,7 +68,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data
+          git add data media
           git commit -m "data: add game from form $ISSUE_NUMBER"
           git push
 
