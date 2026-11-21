@@ -1,33 +1,21 @@
 {
- "games": 1,
- "moves": 10,
- "players": 1,
+ "games": 0,
+ "moves": 0,
+ "players": 0,
  "humans_won": 0,
  "ai_won": 0,
- "draws": 1,
+ "draws": 0,
  "opening": {
-  "rock": 1,
+  "rock": 0,
   "paper": 0,
   "scissors": 0
  },
  "repeat_after_win": {
   "repeated": 0,
-  "of": 4
+  "of": 0
  },
- "median_think_ms": 450,
- "ai_round_win_rate": [
-  0.5
- ],
- "margins": [
-  0
- ],
- "last": {
-  "name": null,
-  "score": {
-   "player": 5,
-   "ai": 5,
-   "ties": 0
-  },
-  "at": "2026-11-21T23:45:17Z"
- }
+ "median_think_ms": null,
+ "ai_round_win_rate": [],
+ "margins": [],
+ "last": null
 }
