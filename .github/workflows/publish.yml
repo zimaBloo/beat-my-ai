@@ -1,0 +1,48 @@
+# Builds the game page with the newest AI and statistics and puts it online (GitHub Pages).
+# Does nothing until the repository variable PAGES is set to "on".
+name: Publish
+
+on:
+  workflow_call:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["web/**", "engine/**"]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    if: vars.PAGES == 'on'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main          # always the newest data, also right after a game was saved
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - name: Build the page with the newest data
+        working-directory: web
+        run: |
+          npm ci
+          mkdir -p public/data
+          cp ../data/brain.json ../data/stats.json public/data/
+          npm run build
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: web/dist
+      - id: deploy
+        uses: actions/deploy-pages@v5

@@ -94,12 +94,24 @@ def load_records(path: str | Path) -> list[dict]:
     return records
 
 
+def is_known_game(records: list[dict], facts: dict) -> bool:
+    """True if exactly this game (same AI version, seed and moves) is already stored. A game counts once."""
+    return any((r["brain"], r["seed"], r["moves"]) == (facts["brain"], facts["seed"], facts["moves"]) for r in records)
+
+
+def games_today(records: list[dict], player: str, day: str) -> int:
+    """How many games this player has stored on the given day (YYYY-MM-DD, UTC)."""
+    return sum(r["player"] == player and r["at"].startswith(day) for r in records)
+
+
 def add_record(path: str | Path, facts: dict, *, issue: int, user_id: int, login: str, show_name: bool,
                salt: str, at: str | None = None) -> dict | None:
     """Adds one game to the end of the file. Returns the stored record, or None if this submission is already stored."""
     records = load_records(path)
     if any(r["issue"] == issue for r in records):
         return None                                   # running the job twice must not count a game twice
+    if is_known_game(records, facts):
+        raise ValueError("this game has already been counted")
     record = {
         "v": 1, "n": len(records) + 1,
         "at": at or datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),

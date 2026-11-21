@@ -13,13 +13,14 @@ FACTS = json.loads((SHARED / "record_example.json").read_text())["facts"]
 WHO = dict(user_id=583231, login="octocat", salt="test-salt")
 
 
-def add(path, issue=1, show_name=False, facts=FACTS, **who):
+def add(path, issue=1, show_name=False, facts=None, **who):
+    facts = facts or {**FACTS, "seed": f"{issue:08x}"}          # a different game per form, since a game counts once
     return add_record(path, facts, issue=issue, show_name=show_name, at="2026-11-22T10:15:00Z", **{**WHO, **who})
 
 
 def test_a_game_is_stored_with_everything_needed_to_replay_it(tmp_path):
     f = tmp_path / "games.jsonl"
-    r = add(f)
+    r = add(f, facts=FACTS)
     assert r["n"] == 1 and r["moves"] == FACTS["moves"] and r["ai"] == FACTS["ai"] and r["seed"] == FACTS["seed"]
     assert r["brain"] == FACTS["brain"] and r["score"] == FACTS["score"] and r["at"] == "2026-11-22T10:15:00Z"
     assert r["client"] == FACTS["client"] and len(r["client"]["think_ms"]) == r["rounds"]      # thinking time per move is kept
@@ -44,6 +45,8 @@ def test_the_same_submission_is_never_counted_twice(tmp_path):
     f = tmp_path / "games.jsonl"
     assert add(f, issue=7) is not None
     assert add(f, issue=7) is None
+    with pytest.raises(ValueError, match="already been counted"):
+        add(f, issue=8, facts={**FACTS, "seed": f"{7:08x}"})       # the same game sent again through another form
     assert len(load_records(f)) == 1
 
 

@@ -7,3 +7,4 @@ export * from "./game.ts";
 export * from "./codec.ts";
 export * from "./record.ts";
 export * from "./stats.ts";
+export * from "./issue.ts";

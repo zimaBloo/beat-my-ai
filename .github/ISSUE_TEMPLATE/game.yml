@@ -1,0 +1,25 @@
+name: Send a game
+description: Send a finished game so the AI can learn from it. The game page opens this for you.
+title: "I played against the AI"
+labels: ["game"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Just press **Create** below. Please leave the first two lines as they are: they are your game.
+
+        Your GitHub name is visible on this page either way. It appears on the profile only if the last line says yes.
+  - type: input
+    id: game
+    attributes:
+      label: Game
+    validations:
+      required: true
+  - type: input
+    id: extras
+    attributes:
+      label: Extra
+  - type: input
+    id: name
+    attributes:
+      label: Show my GitHub name on the profile? (yes or no)
