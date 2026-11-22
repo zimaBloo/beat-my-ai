@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
-    "build:single": "tsc --noEmit && vite build --mode single"
+    "build:single": "tsc --noEmit && vite build --mode single",
+    "test": "node --test test/"
   },
   "devDependencies": {
     "typescript": "^7.0.2",
