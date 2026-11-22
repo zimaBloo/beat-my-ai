@@ -1,9 +1,9 @@
 {
-  "train_games": 1,
+  "train_games": 2,
   "test_games": 0,
   "test_moves": 0,
   "note": "Not enough games yet to measure anything.",
-  "games": 1,
-  "moves": 10,
-  "brain": "b521f7f4"
+  "games": 2,
+  "moves": 20,
+  "brain": "efe10b30"
 }
