@@ -43,7 +43,7 @@ async function loadData(): Promise<void> {
     if (b.ok && s.ok) { brain = usable(await b.json() as Brain); stats = await s.json() as Stats; }
   } catch { /* opened from disk or offline: the packed data is fine */ }
   $("brainLine").textContent = brain
-    ? `So far it has studied ${stats.moves} moves from ${stats.games} games.`
+    ? `So far it has studied ${stats.moves} moves from ${stats.games} ${stats.games === 1 ? "game" : "games"}.`
     : "Nobody has played yet, so right now it is guessing.";
 }
 
