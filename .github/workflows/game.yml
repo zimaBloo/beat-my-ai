@@ -83,11 +83,18 @@ jobs:
           gh issue comment "$ISSUE_NUMBER" --repo "$REPO" --body-file "$RUNNER_TEMP/reply.md"
           gh issue close "$ISSUE_NUMBER" --repo "$REPO"
 
+  # Starts the Publish job as a run of its own. Calling it from inside this run made its last step fail:
+  # it could not find the page files it had just uploaded.
   publish:
     needs: game
     if: needs.game.outputs.status == 'stored' && vars.PAGES == 'on'
-    uses: ./.github/workflows/publish.yml
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
     permissions:
-      contents: read
-      pages: write
-      id-token: write
+      actions: write
+    steps:
+      - name: Start the Publish job
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: gh workflow run publish.yml --repo "$REPO" --ref main
