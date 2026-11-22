@@ -1,21 +1,33 @@
 {
- "games": 0,
- "moves": 0,
- "players": 0,
+ "games": 1,
+ "moves": 10,
+ "players": 1,
  "humans_won": 0,
  "ai_won": 0,
- "draws": 0,
+ "draws": 1,
  "opening": {
   "rock": 0,
-  "paper": 0,
+  "paper": 1,
   "scissors": 0
  },
  "repeat_after_win": {
-  "repeated": 0,
-  "of": 0
+  "repeated": 2,
+  "of": 3
  },
- "median_think_ms": null,
- "ai_round_win_rate": [],
- "margins": [],
- "last": null
+ "median_think_ms": 3913,
+ "ai_round_win_rate": [
+  0.5
+ ],
+ "margins": [
+  0
+ ],
+ "last": {
+  "name": "zimaBloo",
+  "score": {
+   "player": 3,
+   "ai": 3,
+   "ties": 4
+  },
+  "at": "2026-11-22T14:10:28Z"
+ }
 }

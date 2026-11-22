@@ -1,10 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400" role="img" aria-labelledby="t d" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
 <title id="t">Scoreboard: humans 0, the AI 0</title>
-<desc id="d">Nobody has played yet. Be the first.</desc>
+<desc id="d">The AI has studied 10 moves from 1 game. Latest player: @zimaBloo</desc>
 <rect width="1200" height="400" rx="28" fill="#f3f6fb"/>
 <text x="64" y="84" font-size="34" fill="#4b5d7a">humans won</text>
 <text x="64" y="224" font-size="150" font-weight="800" letter-spacing="-5" fill="#0b1b36">0</text>
 <text x="400" y="84" font-size="34" fill="#4b5d7a">the AI won</text>
 <text x="400" y="224" font-size="150" font-weight="800" letter-spacing="-5" fill="#1d4fc4">0</text>
-<text x="64" y="300" font-size="36" fill="#0b1b36">Nobody has played yet. Be the first.</text>
+<text x="64" y="300" font-size="36" fill="#0b1b36">The AI has studied 10 moves from 1 game.</text>
+<text x="64" y="352" font-size="36" fill="#4b5d7a">Latest player: @zimaBloo</text>
 </svg>
